@@ -1,2 +1,4 @@
 node_modules/
 .DS_Store
+public/assets/css/output.css
+public/sitemap.xml

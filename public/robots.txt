@@ -1,0 +1,13 @@
+# Saat ini seluruh website ditutup sementara dari perayapan mesin pencari
+# sampai konten dan halaman siap dipublikasikan.
+#
+# Saat sudah siap diindeks Google:
+# 1. Hapus baris "Disallow: /" di bawah ini.
+# 2. Hapus tanda "#" di depan "Allow: /" dan "Sitemap: ...".
+# 3. Hapus tag <meta name="robots" content="noindex, nofollow" /> pada halaman yang siap.
+
+User-agent: *
+Disallow: /
+# Allow: /
+
+# Sitemap: https://yusuf-habib.blog/sitemap.xml

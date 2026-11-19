@@ -3,8 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yusuf Habib</title>
-  <meta name="description" content="Catatan dan tulisan Yusuf Habib seputar absensi, presensi, dan sistem web sederhana untuk sekolah serta instansi." />
+  <title>Blog: Absensi, Presensi & Administrasi Sekolah | Yusuf Habib</title>
+  <meta name="description" content="Kumpulan tulisan Yusuf Habib seputar absensi mata pelajaran, presensi GPS guru, pencatatan SPP sekolah, dan solusi operasional instansi." />
+  <!-- Hapus baris di bawah ini saat halaman sudah siap diindeks Google -->
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://yusuf-habib.blog/blog/" />
+
+  <!-- Open Graph & Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Yusuf Habib" />
+  <meta property="og:locale" content="id_ID" />
+  <meta property="og:title" content="Blog: Absensi, Presensi & Administrasi Sekolah | Yusuf Habib" />
+  <meta property="og:description" content="Kumpulan tulisan Yusuf Habib seputar absensi mata pelajaran, presensi GPS guru, pencatatan SPP sekolah, dan solusi operasional instansi." />
+  <meta property="og:url" content="https://yusuf-habib.blog/blog/" />
+  <meta property="og:image" content="https://yusuf-habib.blog/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yusuf Habib — Catatan sistem absensi, presensi dan SPP sekolah" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Blog: Absensi, Presensi & Administrasi Sekolah | Yusuf Habib" />
+  <meta name="twitter:description" content="Kumpulan tulisan Yusuf Habib seputar absensi mata pelajaran, presensi GPS guru, pencatatan SPP sekolah, dan solusi operasional instansi." />
+  <meta name="twitter:image" content="https://yusuf-habib.blog/og-image.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
   <!-- Terapkan tema sebelum halaman dirender agar tidak berkedip saat mode gelap -->
   <script>
     (function () {
@@ -16,13 +41,29 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="./assets/css/output.css" />
+
+  <link rel="preload" href="/assets/fonts/merriweather-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/css/output.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://yusuf-habib.blog/blog/#webpage",
+    "url": "https://yusuf-habib.blog/blog/",
+    "name": "Blog: Absensi, Presensi & Administrasi Sekolah | Yusuf Habib",
+    "description": "Kumpulan tulisan Yusuf Habib seputar absensi mata pelajaran, presensi GPS guru, pencatatan SPP sekolah, dan solusi operasional instansi.",
+    "inLanguage": "id-ID",
+    "isPartOf": {
+      "@id": "https://yusuf-habib.blog/#website"
+    }
+  }
+  </script>
 </head>
 <body class="flex min-h-screen flex-col">
   <!-- Masthead + navigasi (tidak sticky) -->
   <header class="mx-auto w-full max-w-5xl px-5 sm:px-8">
     <div class="py-9 text-center sm:py-12">
-      <a href="./index.html" class="font-serif text-[2.6rem] italic leading-none tracking-wide sm:text-6xl">Yusuf Habib</a>
+      <a href="/" class="font-serif text-[2.6rem] italic leading-none tracking-wide sm:text-6xl">Yusuf Habib</a>
     </div>
 
     <nav class="border-y border-line" aria-label="Navigasi utama">
@@ -47,10 +88,10 @@
         <!-- Menu desktop -->
         <span class="hidden md:block" aria-hidden="true"></span>
         <div class="hidden items-center gap-9 py-4 md:flex">
-            <a href="./index.html" aria-current="page" class="text-[15px] underline decoration-1 underline-offset-[6px]">Beranda</a>
-            <a href="./blog.html" class="text-[15px] hover:underline decoration-1 underline-offset-[6px]">Blog</a>
-            <a href="./proyek.html" class="text-[15px] hover:underline decoration-1 underline-offset-[6px]">Proyek</a>
-            <a href="./kontak.html" class="text-[15px] hover:underline decoration-1 underline-offset-[6px]">Kontak</a>
+            <a href="/" class="text-[15px] hover:underline decoration-1 underline-offset-[6px]">Beranda</a>
+            <a href="/blog/" aria-current="page" class="text-[15px] underline decoration-1 underline-offset-[6px]">Blog</a>
+            <a href="/proyek/" class="text-[15px] hover:underline decoration-1 underline-offset-[6px]">Proyek</a>
+            <a href="/kontak/" class="text-[15px] hover:underline decoration-1 underline-offset-[6px]">Kontak</a>
         </div>
 
         <!-- Toggle tema terang/gelap -->
@@ -76,10 +117,10 @@
 
       <!-- Menu mobile -->
       <div id="mobile-menu" class="hidden border-t border-line py-2 text-center md:hidden">
-          <a href="./index.html" aria-current="page" class="block py-2.5 text-[15px] underline decoration-1 underline-offset-[6px]">Beranda</a>
-          <a href="./blog.html" class="block py-2.5 text-[15px] hover:underline decoration-1 underline-offset-[6px]">Blog</a>
-          <a href="./proyek.html" class="block py-2.5 text-[15px] hover:underline decoration-1 underline-offset-[6px]">Proyek</a>
-          <a href="./kontak.html" class="block py-2.5 text-[15px] hover:underline decoration-1 underline-offset-[6px]">Kontak</a>
+          <a href="/" class="block py-2.5 text-[15px] hover:underline decoration-1 underline-offset-[6px]">Beranda</a>
+          <a href="/blog/" aria-current="page" class="block py-2.5 text-[15px] underline decoration-1 underline-offset-[6px]">Blog</a>
+          <a href="/proyek/" class="block py-2.5 text-[15px] hover:underline decoration-1 underline-offset-[6px]">Proyek</a>
+          <a href="/kontak/" class="block py-2.5 text-[15px] hover:underline decoration-1 underline-offset-[6px]">Kontak</a>
       </div>
     </nav>
   </header>
@@ -87,17 +128,16 @@
   <main class="mx-auto w-full max-w-5xl flex-1 px-5 py-10 sm:px-8 sm:py-14">
     <article class="mx-auto max-w-3xl border border-line px-6 py-10 sm:px-12 sm:py-12">
       <header class="text-center">
-        <h1 class="font-serif text-3xl leading-snug sm:text-[2.1rem]">Halo, saya Yusuf.</h1>
+        <h1 class="font-serif text-3xl leading-snug sm:text-[2.1rem]">Blog</h1>
         <div class="mt-5 flex items-center justify-center gap-4">
           <span class="h-px w-12 bg-line sm:w-24" aria-hidden="true"></span>
-          <p class="text-sm text-muted sm:text-[15px]">Beranda</p>
+          <p class="text-sm text-muted sm:text-[15px]">Tulisan &amp; catatan</p>
           <span class="h-px w-12 bg-line sm:w-24" aria-hidden="true"></span>
         </div>
       </header>
 
       <div class="mt-8 space-y-5 text-base leading-[1.75] text-muted">
-        <p>Di sini saya menulis tentang hal-hal yang saya temui saat membangun sistem untuk sekolah dan instansi: absensi mata pelajaran, presensi guru, pencatatan SPP, dan masalah operasional lain yang ternyata bisa dibuat lebih sederhana.</p>
-        <p>Halaman ini masih berupa kerangka. Isi lengkapnya menyusul.</p>
+        <p>Daftar tulisan akan tampil di halaman ini, mulai dari cara merekap absen tanpa repot, pilihan antara mesin sidik jari dan absen GPS, sampai cara merapikan catatan pembayaran SPP.</p>
       </div>
     </article>
   </main>
@@ -106,9 +146,9 @@
     <div class="flex flex-col items-center gap-3 border-t border-line py-8 text-sm text-muted sm:flex-row sm:justify-between">
       <p>&copy; 2026 Yusuf Habib</p>
       <div class="flex gap-6">
-          <a href="./blog.html" class="hover:text-ink hover:underline decoration-1 underline-offset-4">Blog</a>
-          <a href="./proyek.html" class="hover:text-ink hover:underline decoration-1 underline-offset-4">Proyek</a>
-          <a href="./kontak.html" class="hover:text-ink hover:underline decoration-1 underline-offset-4">Kontak</a>
+          <a href="/blog/" class="hover:text-ink hover:underline decoration-1 underline-offset-4">Blog</a>
+          <a href="/proyek/" class="hover:text-ink hover:underline decoration-1 underline-offset-4">Proyek</a>
+          <a href="/kontak/" class="hover:text-ink hover:underline decoration-1 underline-offset-4">Kontak</a>
       </div>
     </div>
   </footer>
@@ -126,6 +166,6 @@
     </svg>
   </button>
 
-  <script src="./assets/js/main.js"></script>
+  <script src="/assets/js/main.js" defer></script>
 </body>
 </html>

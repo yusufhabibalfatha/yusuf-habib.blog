@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/* Dark mode berbasis class .dark pada <html> (diatur oleh tombol toggle) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Font lokal (self-hosted, tanpa CDN) */
+@font-face {
+  font-family: "Merriweather";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/merriweather-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Merriweather";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/merriweather-latin-400-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Merriweather";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/merriweather-latin-700-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/open-sans-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/open-sans-latin-600-normal.woff2") format("woff2");
+}
+
+/*
+  Token warna: cukup ganti nilai di :root (terang) dan .dark (gelap).
+  Pakai di HTML sebagai bg-paper, text-ink, text-muted, border-line, dst.
+*/
+@theme inline {
+  --font-serif: "Merriweather", Georgia, "Times New Roman", serif;
+  --font-sans: "Open Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+}
+
+@layer base {
+  :root {
+    --paper: #ffffff;
+    --ink: #111111;
+    --muted: #555555;
+    --line: #111111;
+    color-scheme: light;
+  }
+
+  .dark {
+    --paper: #141414;
+    --ink: #ececec;
+    --muted: #a3a3a3;
+    --line: #8a8a8a;
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+
+  ::selection {
+    background-color: var(--ink);
+    color: var(--paper);
+  }
+}

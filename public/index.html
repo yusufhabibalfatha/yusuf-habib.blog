@@ -34,8 +34,7 @@
   <script>
     (function () {
       try {
-        var t = localStorage.getItem("theme");
-        if (t === "dark" || (!t && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        if (localStorage.getItem("theme") === "dark") {
           document.documentElement.classList.add("dark");
         }
       } catch (e) {}
@@ -62,8 +61,31 @@
       {
         "@type": "Person",
         "@id": "https://yusuf-habib.blog/#person",
-        "name": "Yusuf Habib",
+        "name": "Yusuf Habib Alfatha",
+        "alternateName": "Yusuf Habib",
         "url": "https://yusuf-habib.blog/",
+        "image": "https://yusuf-habib.blog/assets/images/yusuf-habib-alfatha.webp",
+        "jobTitle": "Guru dan Pengembang Sistem Web",
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Universitas Brawijaya"
+        },
+        "homeLocation": {
+          "@type": "Place",
+          "name": "Kota Tarakan"
+        },
+        "knowsAbout": [
+          "Sistem Informasi Sekolah",
+          "Sistem Absensi Siswa",
+          "Presensi GPS",
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "React",
+          "Vue.js",
+          "PHP",
+          "WordPress"
+        ],
         "email": "y.habib.alfatha@gmail.com",
         "sameAs": [
           "https://github.com/yusufhabibalfatha"
@@ -150,10 +172,24 @@
         </div>
       </header>
 
-      <div class="mt-8 space-y-5 text-base leading-[1.75] text-muted">
-        <p>Saya Yusuf Habib. Sehari-hari saya membuat sistem web sederhana untuk membantu pekerjaan operasional di sekolah dan instansi.</p>
-        <p>Kebanyakan yang saya kerjakan seputar absensi mata pelajaran, presensi guru, dan pencatatan SPP agar datanya rapi dan mudah direkap.</p>
-        <p>Melalui blog ini, saya menulis catatan dari pekerjaan tersebut beserta contoh format administrasi yang bisa langsung dipakai.</p>
+      <div class="mt-8 flex flex-col items-center gap-7 sm:flex-row sm:items-start sm:gap-8">
+        <div class="w-40 shrink-0 border border-line/40 bg-white sm:w-48">
+          <img
+            src="/assets/images/yusuf-habib-alfatha.webp"
+            alt="Foto Yusuf Habib Alfatha"
+            width="800"
+            height="1000"
+            decoding="async"
+            fetchpriority="high"
+            class="block h-auto w-full object-cover dark:brightness-95"
+          />
+        </div>
+
+        <div class="space-y-4 text-base leading-[1.75] text-muted">
+          <p>Saya Yusuf Habib Alfatha, lulusan Sistem Informasi Universitas Brawijaya yang kini mengajar di SMP dan SMA Budi Utomo Boarding School, Kota Tarakan.</p>
+          <p>Selain mengajar Informatika dan Pendidikan Pancasila, saya membangun sistem web sederhana untuk kebutuhan operasional sekolah dan organisasi: absensi mata pelajaran, presensi GPS guru, hingga pencatatan SPP.</p>
+          <p>Melalui blog ini, saya menulis catatan dari sistem yang saya pakai dan uji langsung di lapangan beserta contoh format yang bisa langsung diterapkan.</p>
+        </div>
       </div>
 
       <div class="mt-8 border-t border-line/40 pt-6 text-[15px] leading-[1.75] text-muted">
@@ -168,6 +204,30 @@
         </p>
       </div>
     </article>
+
+    <!-- Ringkasan proyek pilihan: judul memotong garis atas -->
+    <section class="relative mx-auto mt-12 max-w-3xl border border-line px-6 pt-10 pb-8 sm:px-12" aria-labelledby="proyek-pilihan">
+      <h2 id="proyek-pilihan" class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-paper px-5 font-serif text-lg leading-7 whitespace-nowrap">Proyek pilihan</h2>
+
+      <ul class="divide-y divide-line/30 text-[15px]">
+        <li class="pb-4">
+          <p class="font-semibold text-ink">Absensi Mapel &amp; Kirim Rekap WhatsApp</p>
+          <p class="mt-1 leading-[1.65] text-muted">Sistem absensi per mata pelajaran yang langsung merangkum laporan harian siswa ke WhatsApp wali kelas dan orang tua.</p>
+        </li>
+        <li class="py-4">
+          <p class="font-semibold text-ink">Presensi Guru Berbasis Lokasi GPS</p>
+          <p class="mt-1 leading-[1.65] text-muted">Validasi jarak posisi HP terhadap koordinat sekolah saat guru melakukan presensi masuk maupun dinas luar.</p>
+        </li>
+        <li class="pt-4">
+          <p class="font-semibold text-ink">Manajemen SPP &amp; Cetak Kwitansi</p>
+          <p class="mt-1 leading-[1.65] text-muted">Pencatatan tagihan siswa, pembayaran bertahap hingga lunas, dan cetak bukti kwitansi langsung dari browser.</p>
+        </li>
+      </ul>
+
+      <div class="mt-6 border-t border-line/40 pt-5 text-center text-[15px]">
+        <a href="/proyek/" class="text-ink underline decoration-1 underline-offset-4 hover:no-underline">Lihat daftar proyek lengkap &rarr;</a>
+      </div>
+    </section>
   </main>
 
   <footer class="mx-auto w-full max-w-5xl px-5 sm:px-8">

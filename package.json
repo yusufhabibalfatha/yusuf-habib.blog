@@ -11,8 +11,10 @@
     "dev": "npm run build:css && (trap 'kill 0' EXIT; npm run watch & npm run serve)"
   },
   "devDependencies": {
+    "@fontsource/eb-garamond": "^5.3.0",
     "@fontsource/merriweather": "^5.3.0",
     "@fontsource/open-sans": "^5.3.0",
+    "@fontsource/playfair-display": "^5.3.0",
     "@tailwindcss/cli": "^4.0.0",
     "tailwindcss": "^4.0.0"
   }

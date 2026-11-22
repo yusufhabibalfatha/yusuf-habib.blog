@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Kontak | Yusuf Habib</title>
   <meta name="description" content="Hubungi Yusuf Habib lewat WhatsApp atau email untuk bertanya soal tulisan di blog, sistem absensi dan SPP sekolah, atau kebutuhan sistem web instansi." />
   <!-- Hapus baris di bawah ini saat halaman sudah siap diindeks Google -->
@@ -25,23 +25,33 @@
   <meta name="twitter:description" content="Hubungi Yusuf Habib lewat WhatsApp atau email untuk bertanya soal tulisan di blog, sistem absensi dan SPP sekolah, atau kebutuhan sistem web instansi." />
   <meta name="twitter:image" content="https://yusuf-habib.blog/og-image.png" />
 
-  <!-- Favicon -->
+  <!-- Favicon & iOS Safari "Tambah ke Layar Utama" (PWA) -->
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
   <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="application-name" content="Yusuf Habib" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Yusuf Habib" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#F7F4EB" />
 
-  <!-- Terapkan tema sebelum halaman dirender agar tidak berkedip saat mode gelap -->
+  <!-- Terapkan tema sebelum halaman dirender (default: Ancient Parchment terang) -->
   <script>
     (function () {
       try {
         if (localStorage.getItem("theme") === "dark") {
           document.documentElement.classList.add("dark");
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute("content", "#171310");
         }
       } catch (e) {}
     })();
   </script>
 
-  <link rel="preload" href="/assets/fonts/merriweather-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/playfair-display-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/eb-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/output.css" />
   <script type="application/ld+json">
   {
@@ -59,21 +69,36 @@
   </script>
 </head>
 <body class="flex min-h-screen flex-col">
-  <!-- Masthead + navigasi (tidak sticky) -->
+  <!-- Masthead Old English + Navigasi Vintage Scholar -->
   <header class="mx-auto w-full max-w-5xl px-5 sm:px-8">
-    <div class="py-9 text-center sm:py-12">
-      <a href="/" class="font-serif text-[2.6rem] italic leading-none tracking-wide sm:text-6xl">Yusuf Habib</a>
+    <div class="pt-7 pb-6 text-center sm:pt-10 sm:pb-8">
+      <div class="mb-3 flex items-center justify-center gap-3 text-gold" aria-hidden="true">
+        <span class="h-px w-10 bg-gold/60 sm:w-16"></span>
+        <span class="text-xs">&#9830;</span>
+        <span class="h-px w-10 bg-gold/60 sm:w-16"></span>
+      </div>
+      <a href="/" class="inline-block focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4">
+        <img
+          src="/assets/images/yusuf-habib-masthead.webp"
+          alt="Yusuf Habib"
+          width="1200"
+          height="281"
+          decoding="async"
+          fetchpriority="high"
+          class="mx-auto h-14 w-auto sm:h-20 dark:invert"
+        />
+      </a>
     </div>
 
-    <nav class="border-y border-line" aria-label="Navigasi utama">
-      <div class="flex items-center justify-between py-2 md:grid md:grid-cols-[1fr_auto_1fr] md:py-0">
+    <nav class="scholar-nav-bar" aria-label="Navigasi utama">
+      <div class="flex items-center justify-between py-2.5 md:grid md:grid-cols-[1fr_auto_1fr] md:py-0">
         <!-- Tombol hamburger (mobile) -->
         <button
           id="mobile-menu-button"
           type="button"
           aria-controls="mobile-menu"
           aria-expanded="false"
-          class="-ml-2 inline-flex items-center gap-2 p-2 text-[15px] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 md:hidden"
+          class="-ml-1 inline-flex items-center gap-2 px-2 py-1.5 font-serif text-xs font-semibold uppercase tracking-[0.14em] text-ink focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 md:hidden"
         >
           <svg id="icon-hamburger" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
             <path stroke-linecap="square" d="M3 6h18M3 12h18M3 18h18" />
@@ -86,11 +111,14 @@
 
         <!-- Menu desktop -->
         <span class="hidden md:block" aria-hidden="true"></span>
-        <div class="hidden items-center gap-9 py-4 md:flex">
-            <a href="/" class="text-[15px] hover:underline decoration-1 underline-offset-[6px]">Beranda</a>
-            <a href="/blog/" class="text-[15px] hover:underline decoration-1 underline-offset-[6px]">Blog</a>
-            <a href="/proyek/" class="text-[15px] hover:underline decoration-1 underline-offset-[6px]">Proyek</a>
-            <a href="/kontak/" aria-current="page" class="text-[15px] underline decoration-1 underline-offset-[6px]">Kontak</a>
+        <div class="hidden items-center gap-5 py-4 font-serif text-[13px] font-semibold uppercase tracking-[0.16em] md:flex">
+          <a href="/" class="text-ink transition-colors hover:text-amber">Beranda</a>
+          <span class="text-gold select-none" aria-hidden="true">&#9830;</span>
+          <a href="/blog/" class="text-ink transition-colors hover:text-amber">Blog</a>
+          <span class="text-gold select-none" aria-hidden="true">&#9830;</span>
+          <a href="/proyek/" class="text-ink transition-colors hover:text-amber">Proyek</a>
+          <span class="text-gold select-none" aria-hidden="true">&#9830;</span>
+          <a href="/kontak/" aria-current="page" class="text-amber underline decoration-gold decoration-1 underline-offset-[6px]">Kontak</a>
         </div>
 
         <!-- Toggle tema terang/gelap -->
@@ -100,13 +128,11 @@
           aria-pressed="false"
           aria-label="Ganti ke tema gelap"
           title="Ganti tema"
-          class="-mr-2 p-2 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 md:justify-self-end"
+          class="-mr-1 p-2 text-ink transition-colors hover:text-amber focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 md:justify-self-end"
         >
-          <!-- Bulan: tampil di tema terang -->
           <svg class="h-5 w-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
             <path stroke-linejoin="round" d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z" />
           </svg>
-          <!-- Matahari: tampil di tema gelap -->
           <svg class="hidden h-5 w-5 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
             <circle cx="12" cy="12" r="4" />
             <path stroke-linecap="square" d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
@@ -115,74 +141,98 @@
       </div>
 
       <!-- Menu mobile -->
-      <div id="mobile-menu" class="hidden border-t border-line py-2 text-center md:hidden">
-          <a href="/" class="block py-2.5 text-[15px] hover:underline decoration-1 underline-offset-[6px]">Beranda</a>
-          <a href="/blog/" class="block py-2.5 text-[15px] hover:underline decoration-1 underline-offset-[6px]">Blog</a>
-          <a href="/proyek/" class="block py-2.5 text-[15px] hover:underline decoration-1 underline-offset-[6px]">Proyek</a>
-          <a href="/kontak/" aria-current="page" class="block py-2.5 text-[15px] underline decoration-1 underline-offset-[6px]">Kontak</a>
+      <div id="mobile-menu" class="hidden border-t border-gold/50 py-3 text-center font-serif text-xs font-semibold uppercase tracking-[0.16em] md:hidden">
+        <a href="/" class="block py-2.5 text-ink hover:text-amber">Beranda</a>
+        <a href="/blog/" class="block py-2.5 text-ink hover:text-amber">Blog</a>
+        <a href="/proyek/" class="block py-2.5 text-ink hover:text-amber">Proyek</a>
+        <a href="/kontak/" aria-current="page" class="block py-2.5 text-amber underline decoration-gold decoration-1 underline-offset-[6px]">Kontak</a>
       </div>
     </nav>
   </header>
 
-  <main class="mx-auto w-full max-w-5xl flex-1 px-5 py-10 sm:px-8 sm:py-14">
-    <article class="mx-auto max-w-3xl border border-line px-6 py-10 sm:px-12 sm:py-12">
-      <header class="text-center">
-        <h1 class="font-serif text-3xl leading-snug sm:text-[2.1rem]">Ada kendala sistem atau sekadar ingin diskusi?</h1>
-        <div class="mt-5 flex items-center justify-center gap-4">
-          <span class="h-px w-12 bg-line sm:w-24" aria-hidden="true"></span>
-          <p class="text-sm text-muted sm:text-[15px]">Kontak</p>
-          <span class="h-px w-12 bg-line sm:w-24" aria-hidden="true"></span>
-        </div>
-      </header>
-
-      <div class="mt-8 text-center text-base leading-[1.75] text-muted">
-        <p class="mx-auto max-w-xl">
-          Mau bertanya soal tulisan di blog ini, ingin melihat contoh sistem absensi dan SPP, atau instansi Anda punya masalah operasional yang perlu dibuatkan sistem web sederhana? Silakan kirim pesan.
-        </p>
+  <main class="mx-auto w-full max-w-5xl flex-1 px-5 pt-9 pb-4 sm:px-8 sm:pt-12">
+    <article class="scholar-card mx-auto max-w-3xl px-6 py-10 text-center sm:px-12 sm:py-12">
+      <p class="font-serif text-xs font-semibold uppercase tracking-[0.18em] text-amber">Korespondensi</p>
+      <h1 class="mt-2 font-serif text-3xl font-bold leading-snug text-ink sm:text-4xl">Ada kendala sistem atau sekadar ingin diskusi?</h1>
+      <div class="mt-4 flex items-center justify-center gap-3 text-gold" aria-hidden="true">
+        <span class="h-px w-12 bg-gold/75 sm:w-20"></span>
+        <span class="text-xs">&#9830;</span>
+        <span class="h-px w-12 bg-gold/75 sm:w-20"></span>
       </div>
 
-      <div class="mt-9 flex justify-center">
+      <p class="mx-auto mt-6 max-w-xl text-[18px] leading-[1.72] text-muted">
+        Mau bertanya soal tulisan di blog ini, ingin melihat contoh sistem absensi dan SPP, atau instansi Anda punya masalah operasional yang perlu dibuatkan sistem web sederhana? Silakan kirim pesan.
+      </p>
+
+      <div class="mt-8 flex justify-center">
         <a
           href="https://wa.me/6287865712625?text=Halo%20Mas%20Yusuf%2C%20saya%20baru%20baca%20yusuf-habib.blog%20dan%20ingin%20diskusi%20tentang..."
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-block bg-ink px-8 py-4 text-[15px] font-semibold text-paper hover:opacity-85 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4"
+          class="scholar-btn-primary"
         >Chat via WhatsApp</a>
       </div>
     </article>
 
-    <!-- Kotak kontak lain: judul memotong garis atas, seperti widget di referensi -->
-    <section class="relative mx-auto mt-12 max-w-3xl border border-line px-6 pt-10 pb-8 sm:px-12" aria-labelledby="kontak-lain">
-      <h2 id="kontak-lain" class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-paper px-5 font-serif text-lg leading-7 whitespace-nowrap">Kontak lain</h2>
+    <!-- Kotak kontak lain -->
+    <section class="scholar-card mx-auto mt-10 max-w-3xl px-6 py-9 sm:px-12 sm:py-10" aria-labelledby="kontak-lain">
+      <div class="text-center">
+        <h2 id="kontak-lain" class="font-serif text-xl font-bold text-ink sm:text-2xl">Kontak Lain</h2>
+        <div class="mt-3 flex items-center justify-center gap-3 text-gold" aria-hidden="true">
+          <span class="h-px w-10 bg-gold/65"></span>
+          <span class="text-[10px]">&#9830;</span>
+          <span class="h-px w-10 bg-gold/65"></span>
+        </div>
+      </div>
 
-      <dl class="divide-y divide-line/30 text-[15px]">
+      <dl class="mt-7 divide-y divide-gold/35 text-[17px]">
         <div class="flex flex-col gap-1 pb-4 sm:flex-row sm:justify-between">
-          <dt class="text-muted">Email</dt>
-          <dd><a href="mailto:y.habib.alfatha@gmail.com" class="underline decoration-1 underline-offset-4 hover:no-underline">y.habib.alfatha@gmail.com</a></dd>
+          <dt class="font-serif text-xs uppercase tracking-[0.14em] text-amber sm:self-center">Email</dt>
+          <dd><a href="mailto:y.habib.alfatha@gmail.com" class="scholar-link">y.habib.alfatha@gmail.com</a></dd>
         </div>
         <div class="flex flex-col gap-1 py-4 sm:flex-row sm:justify-between">
-          <dt class="text-muted">GitHub</dt>
-          <dd><a href="https://github.com/yusufhabibalfatha" target="_blank" rel="noopener noreferrer" class="underline decoration-1 underline-offset-4 hover:no-underline">github.com/yusufhabibalfatha</a></dd>
+          <dt class="font-serif text-xs uppercase tracking-[0.14em] text-amber sm:self-center">GitHub</dt>
+          <dd><a href="https://github.com/yusufhabibalfatha" target="_blank" rel="noopener noreferrer" class="scholar-link">github.com/yusufhabibalfatha</a></dd>
         </div>
         <div class="flex flex-col gap-1 py-4 sm:flex-row sm:justify-between">
-          <dt class="text-muted">Domisili</dt>
-          <dd>Kota Tarakan</dd>
+          <dt class="font-serif text-xs uppercase tracking-[0.14em] text-amber sm:self-center">Domisili</dt>
+          <dd class="text-ink">Kota Tarakan</dd>
         </div>
         <div class="flex flex-col gap-1 pt-4 sm:flex-row sm:justify-between sm:gap-6">
-          <dt class="shrink-0 text-muted">Fokus</dt>
-          <dd class="sm:text-right">Sistem web sekolah (absensi, SPP, profil) &amp; frontend web</dd>
+          <dt class="shrink-0 font-serif text-xs uppercase tracking-[0.14em] text-amber sm:self-center">Fokus</dt>
+          <dd class="text-ink sm:text-right">Sistem web sekolah (absensi, SPP, profil) &amp; frontend web</dd>
         </div>
       </dl>
     </section>
   </main>
 
-  <footer class="mx-auto w-full max-w-5xl px-5 sm:px-8">
-    <div class="flex flex-col items-center gap-3 border-t border-line py-8 text-sm text-muted sm:flex-row sm:justify-between">
-      <p>&copy; 2026 Yusuf Habib</p>
-      <div class="flex gap-6">
-          <a href="/blog/" class="hover:text-ink hover:underline decoration-1 underline-offset-4">Blog</a>
-          <a href="/proyek/" class="hover:text-ink hover:underline decoration-1 underline-offset-4">Proyek</a>
-          <a href="/kontak/" class="hover:text-ink hover:underline decoration-1 underline-offset-4">Kontak</a>
+  <!-- Footer Gelap Historis -->
+  <footer class="scholar-footer mt-14 w-full">
+    <div class="mx-auto max-w-5xl px-5 py-10 text-center sm:px-8 sm:py-12">
+      <nav class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 font-serif text-xs uppercase tracking-[0.16em] text-footer-ink/85" aria-label="Navigasi footer">
+        <a href="/" class="transition-colors hover:text-gold">Beranda</a>
+        <span class="text-gold/70" aria-hidden="true">&#9830;</span>
+        <a href="/blog/" class="transition-colors hover:text-gold">Blog</a>
+        <span class="text-gold/70" aria-hidden="true">&#9830;</span>
+        <a href="/proyek/" class="transition-colors hover:text-gold">Proyek</a>
+        <span class="text-gold/70" aria-hidden="true">&#9830;</span>
+        <a href="/kontak/" class="transition-colors hover:text-gold">Kontak</a>
+      </nav>
+
+      <p class="mx-auto mt-5 max-w-lg text-[16px] italic text-footer-ink/75">
+        Catatan dan sistem web sederhana untuk sekolah serta instansi, ditulis dari pengalaman langsung di lapangan.
+      </p>
+
+      <p class="mt-4 font-serif text-xs tracking-wider text-footer-ink/65">
+        &copy; 2026 Yusuf Habib &middot; Kota Tarakan
+      </p>
+
+      <div class="mt-5 flex items-center justify-center gap-3 text-gold" aria-hidden="true">
+        <span class="h-px w-12 bg-gold/45"></span>
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2c-1.4 2.4-2.1 4.6-2.1 6.7 0 1.4.4 2.6 1.1 3.6H8.9c.7-1 .9-2 .6-3.1-.4-1.5-1.7-2.6-3.2-2.6-1.4 0-2.5 1-2.5 2.4 0 1.1.8 2 1.8 2-.5.1-1-.2-1-.8 0-.5.4-.8.9-.8.9 0 1.6.9 1.6 2 0 1.5-1.1 2.7-2.6 2.9v1.5h5.2c-.3 1.4-1.1 2.5-2.4 3.2l.8 1.3c1.5-.8 2.6-2 3.1-3.6h1.6c.5 1.6 1.6 2.8 3.1 3.6l.8-1.3c-1.3-.7-2.1-1.8-2.4-3.2h5.2v-1.5c-1.5-.2-2.6-1.4-2.6-2.9 0-1.1.7-2 1.6-2 .5 0 .9.3.9.8 0 .6-.5.9-1 .8 1 0 1.8-.9 1.8-2 0-1.4-1.1-2.4-2.5-2.4-1.5 0-2.8 1.1-3.2 2.6-.3 1.1-.1 2.1.6 3.1H13c.7-1 1.1-2.2 1.1-3.6 0-2.1-.7-4.3-2.1-6.7Z" />
+        </svg>
+        <span class="h-px w-12 bg-gold/45"></span>
       </div>
     </div>
   </footer>
@@ -193,9 +243,9 @@
     type="button"
     aria-label="Kembali ke atas"
     title="Kembali ke atas"
-    class="invisible fixed right-5 bottom-5 flex h-11 w-11 translate-y-2 items-center justify-center border border-line bg-paper opacity-0 transition duration-200 hover:bg-ink hover:text-paper focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 sm:right-8 sm:bottom-8"
+    class="invisible fixed right-5 bottom-5 flex h-11 w-11 translate-y-2 items-center justify-center border border-gold bg-footer-bg text-gold opacity-0 shadow-md transition duration-200 hover:bg-amber hover:text-paper focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 sm:right-8 sm:bottom-8"
   >
-    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
       <path stroke-linecap="square" d="M12 19V5M6 11l6-6 6 6" />
     </svg>
   </button>

@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Proyek Sistem Web untuk Sekolah &amp; Instansi | Yusuf Habib</title>
   <meta name="description" content="Daftar proyek sistem web Yusuf Habib Alfatha untuk sekolah, organisasi, dan klien lepas: absensi mapel WhatsApp, presensi GPS guru, manajemen SPP, hingga slicing UI." />
   <!-- Hapus baris di bawah ini saat halaman sudah siap diindeks Google -->
@@ -25,23 +25,33 @@
   <meta name="twitter:description" content="Daftar proyek sistem web Yusuf Habib Alfatha untuk sekolah, organisasi, dan klien lepas: absensi mapel WhatsApp, presensi GPS guru, manajemen SPP, hingga slicing UI." />
   <meta name="twitter:image" content="https://yusuf-habib.blog/og-image.png" />
 
-  <!-- Favicon -->
+  <!-- Favicon & iOS Safari "Tambah ke Layar Utama" (PWA) -->
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
   <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="application-name" content="Yusuf Habib" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Yusuf Habib" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#F7F4EB" />
 
-  <!-- Terapkan tema sebelum halaman dirender agar tidak berkedip saat mode gelap -->
+  <!-- Terapkan tema sebelum halaman dirender (default: Ancient Parchment terang) -->
   <script>
     (function () {
       try {
         if (localStorage.getItem("theme") === "dark") {
           document.documentElement.classList.add("dark");
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute("content", "#171310");
         }
       } catch (e) {}
     })();
   </script>
 
-  <link rel="preload" href="/assets/fonts/merriweather-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/playfair-display-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/eb-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/output.css" />
   <script type="application/ld+json">
   {
@@ -59,21 +69,36 @@
   </script>
 </head>
 <body class="flex min-h-screen flex-col">
-  <!-- Masthead + navigasi (tidak sticky) -->
+  <!-- Masthead Old English + Navigasi Vintage Scholar -->
   <header class="mx-auto w-full max-w-5xl px-5 sm:px-8">
-    <div class="py-9 text-center sm:py-12">
-      <a href="/" class="font-serif text-[2.6rem] italic leading-none tracking-wide sm:text-6xl">Yusuf Habib</a>
+    <div class="pt-7 pb-6 text-center sm:pt-10 sm:pb-8">
+      <div class="mb-3 flex items-center justify-center gap-3 text-gold" aria-hidden="true">
+        <span class="h-px w-10 bg-gold/60 sm:w-16"></span>
+        <span class="text-xs">&#9830;</span>
+        <span class="h-px w-10 bg-gold/60 sm:w-16"></span>
+      </div>
+      <a href="/" class="inline-block focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4">
+        <img
+          src="/assets/images/yusuf-habib-masthead.webp"
+          alt="Yusuf Habib"
+          width="1200"
+          height="281"
+          decoding="async"
+          fetchpriority="high"
+          class="mx-auto h-14 w-auto sm:h-20 dark:invert"
+        />
+      </a>
     </div>
 
-    <nav class="border-y border-line" aria-label="Navigasi utama">
-      <div class="flex items-center justify-between py-2 md:grid md:grid-cols-[1fr_auto_1fr] md:py-0">
+    <nav class="scholar-nav-bar" aria-label="Navigasi utama">
+      <div class="flex items-center justify-between py-2.5 md:grid md:grid-cols-[1fr_auto_1fr] md:py-0">
         <!-- Tombol hamburger (mobile) -->
         <button
           id="mobile-menu-button"
           type="button"
           aria-controls="mobile-menu"
           aria-expanded="false"
-          class="-ml-2 inline-flex items-center gap-2 p-2 text-[15px] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 md:hidden"
+          class="-ml-1 inline-flex items-center gap-2 px-2 py-1.5 font-serif text-xs font-semibold uppercase tracking-[0.14em] text-ink focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 md:hidden"
         >
           <svg id="icon-hamburger" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
             <path stroke-linecap="square" d="M3 6h18M3 12h18M3 18h18" />
@@ -86,11 +111,14 @@
 
         <!-- Menu desktop -->
         <span class="hidden md:block" aria-hidden="true"></span>
-        <div class="hidden items-center gap-9 py-4 md:flex">
-            <a href="/" class="text-[15px] hover:underline decoration-1 underline-offset-[6px]">Beranda</a>
-            <a href="/blog/" class="text-[15px] hover:underline decoration-1 underline-offset-[6px]">Blog</a>
-            <a href="/proyek/" aria-current="page" class="text-[15px] underline decoration-1 underline-offset-[6px]">Proyek</a>
-            <a href="/kontak/" class="text-[15px] hover:underline decoration-1 underline-offset-[6px]">Kontak</a>
+        <div class="hidden items-center gap-5 py-4 font-serif text-[13px] font-semibold uppercase tracking-[0.16em] md:flex">
+          <a href="/" class="text-ink transition-colors hover:text-amber">Beranda</a>
+          <span class="text-gold select-none" aria-hidden="true">&#9830;</span>
+          <a href="/blog/" class="text-ink transition-colors hover:text-amber">Blog</a>
+          <span class="text-gold select-none" aria-hidden="true">&#9830;</span>
+          <a href="/proyek/" aria-current="page" class="text-amber underline decoration-gold decoration-1 underline-offset-[6px]">Proyek</a>
+          <span class="text-gold select-none" aria-hidden="true">&#9830;</span>
+          <a href="/kontak/" class="text-ink transition-colors hover:text-amber">Kontak</a>
         </div>
 
         <!-- Toggle tema terang/gelap -->
@@ -100,13 +128,11 @@
           aria-pressed="false"
           aria-label="Ganti ke tema gelap"
           title="Ganti tema"
-          class="-mr-2 p-2 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 md:justify-self-end"
+          class="-mr-1 p-2 text-ink transition-colors hover:text-amber focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 md:justify-self-end"
         >
-          <!-- Bulan: tampil di tema terang -->
           <svg class="h-5 w-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
             <path stroke-linejoin="round" d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z" />
           </svg>
-          <!-- Matahari: tampil di tema gelap -->
           <svg class="hidden h-5 w-5 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
             <circle cx="12" cy="12" r="4" />
             <path stroke-linecap="square" d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
@@ -115,61 +141,60 @@
       </div>
 
       <!-- Menu mobile -->
-      <div id="mobile-menu" class="hidden border-t border-line py-2 text-center md:hidden">
-          <a href="/" class="block py-2.5 text-[15px] hover:underline decoration-1 underline-offset-[6px]">Beranda</a>
-          <a href="/blog/" class="block py-2.5 text-[15px] hover:underline decoration-1 underline-offset-[6px]">Blog</a>
-          <a href="/proyek/" aria-current="page" class="block py-2.5 text-[15px] underline decoration-1 underline-offset-[6px]">Proyek</a>
-          <a href="/kontak/" class="block py-2.5 text-[15px] hover:underline decoration-1 underline-offset-[6px]">Kontak</a>
+      <div id="mobile-menu" class="hidden border-t border-gold/50 py-3 text-center font-serif text-xs font-semibold uppercase tracking-[0.16em] md:hidden">
+        <a href="/" class="block py-2.5 text-ink hover:text-amber">Beranda</a>
+        <a href="/blog/" class="block py-2.5 text-ink hover:text-amber">Blog</a>
+        <a href="/proyek/" aria-current="page" class="block py-2.5 text-amber underline decoration-gold decoration-1 underline-offset-[6px]">Proyek</a>
+        <a href="/kontak/" class="block py-2.5 text-ink hover:text-amber">Kontak</a>
       </div>
     </nav>
   </header>
 
-  <main class="mx-auto w-full max-w-5xl flex-1 px-5 py-10 sm:px-8 sm:py-14">
+  <main class="mx-auto w-full max-w-5xl flex-1 px-5 pt-9 pb-4 sm:px-8 sm:pt-12">
     <!-- Kartu Pengantar -->
-    <article class="mx-auto max-w-3xl border border-line px-6 py-10 sm:px-12 sm:py-12">
-      <header class="text-center">
-        <h1 class="font-serif text-3xl leading-snug sm:text-[2.1rem]">Proyek</h1>
-        <div class="mt-5 flex items-center justify-center gap-4">
-          <span class="h-px w-12 bg-line sm:w-24" aria-hidden="true"></span>
-          <p class="text-sm text-muted sm:text-[15px]">Sistem yang pernah &amp; sedang dikerjakan</p>
-          <span class="h-px w-12 bg-line sm:w-24" aria-hidden="true"></span>
-        </div>
-      </header>
+    <article class="scholar-card mx-auto max-w-3xl px-6 py-9 text-center sm:px-12 sm:py-12">
+      <p class="font-serif text-xs font-semibold uppercase tracking-[0.18em] text-amber">Portofolio &amp; Studi Kasus</p>
+      <h1 class="mt-2 font-serif text-3xl font-bold leading-snug text-ink sm:text-4xl">Proyek</h1>
+      <div class="mt-4 flex items-center justify-center gap-3 text-gold" aria-hidden="true">
+        <span class="h-px w-12 bg-gold/75 sm:w-20"></span>
+        <span class="text-xs">&#9830;</span>
+        <span class="h-px w-12 bg-gold/75 sm:w-20"></span>
+      </div>
 
-      <div class="mt-8 space-y-4 text-center text-base leading-[1.75] text-muted">
+      <div class="mt-6 space-y-4 text-[18px] leading-[1.72] text-muted">
         <p>Sebagian besar sistem di bawah ini lahir dari masalah nyata di sekolah dan organisasi tempat saya berkegiatan di Kota Tarakan, mulai dari absensi siswa hingga pendataan warga.</p>
         <p>Saya juga menyertakan catatan pelajaran di lapangan untuk setiap proyek, termasuk bagian yang berhasil dipakai rutin maupun yang menjadi bahan evaluasi.</p>
       </div>
 
-      <div class="mt-7 flex flex-wrap justify-center gap-3 text-sm">
-        <a href="#sekolah-komunitas" class="border border-line px-4 py-2 text-ink hover:bg-ink hover:text-paper focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2">Sistem Sekolah &amp; Komunitas</a>
-        <a href="#proyek-awal" class="border border-line/50 px-4 py-2 text-muted hover:border-line hover:text-ink focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2">Proyek Lepas &amp; Awal Karier</a>
+      <div class="mt-7 flex flex-wrap justify-center gap-3.5">
+        <a href="#sekolah-komunitas" class="scholar-btn-primary">Sistem Sekolah &amp; Komunitas</a>
+        <a href="#proyek-awal" class="scholar-btn-secondary">Proyek Awal (2022&ndash;2023)</a>
       </div>
     </article>
 
     <!-- Bagian 1: Sistem Sekolah & Komunitas -->
     <section id="sekolah-komunitas" class="mx-auto mt-14 max-w-3xl" aria-labelledby="judul-sekolah-komunitas">
       <div class="mb-8 flex items-center gap-4">
-        <h2 id="judul-sekolah-komunitas" class="font-serif text-2xl leading-snug">Sistem Sekolah &amp; Komunitas</h2>
-        <span class="h-px flex-1 bg-line/40" aria-hidden="true"></span>
+        <h2 id="judul-sekolah-komunitas" class="font-serif text-2xl font-bold leading-snug text-ink sm:text-[1.75rem]">Sistem Sekolah &amp; Komunitas</h2>
+        <span class="h-px flex-1 bg-gold/60" aria-hidden="true"></span>
       </div>
 
       <div class="space-y-8">
         <!-- 1. Absensi Mapel & Rekap WhatsApp -->
-        <article class="border border-line p-6 sm:p-10">
+        <article class="scholar-card p-6 sm:p-10">
           <div class="flex flex-wrap items-start justify-between gap-3">
-            <h3 class="font-serif text-xl leading-snug sm:text-2xl">1. Sistem Absensi Siswa per Mata Pelajaran</h3>
-            <span class="shrink-0 border border-line px-2.5 py-0.5 text-xs tracking-wide">Dipakai aktif</span>
+            <h3 class="font-serif text-xl font-bold leading-snug text-ink sm:text-2xl">1. Sistem Absensi Siswa per Mata Pelajaran</h3>
+            <span class="scholar-badge shrink-0">Dipakai aktif</span>
           </div>
 
-          <div class="mt-4 space-y-3 text-[15px] leading-[1.75] text-muted">
+          <div class="mt-4 space-y-3 text-[17px] leading-[1.72] text-muted">
             <p>Karena sekolah menerapkan sistem <em class="italic">boarding school</em>, orang tua di rumah sering tidak mengetahui apakah anaknya masuk di setiap jam pelajaran atau berhalangan di asrama.</p>
             <p>Saya membangun aplikasi web absensi cepat di mana guru cukup memilih kelas, mata pelajaran, dan status kehadiran siswa (Hadir, Terlambat, Izin, Sakit, atau Alpa). Setelah disimpan ke database, sistem otomatis menyusun teks ringkasan siap kirim ke grup WhatsApp guru dan diteruskan wali kelas ke grup wali murid.</p>
           </div>
 
-          <details class="mt-4 border border-line/40 text-sm">
-            <summary class="cursor-pointer px-4 py-2.5 font-semibold text-ink select-none hover:bg-ink/5">Lihat contoh format laporan WhatsApp (data contoh)</summary>
-            <pre class="overflow-x-auto border-t border-line/40 p-4 font-sans text-xs leading-relaxed whitespace-pre-wrap text-ink">📅 *Absensi Siswa Kelas 7*
+          <details class="mt-5 border border-gold/55 bg-paper/70 text-[15px]">
+            <summary class="cursor-pointer px-4 py-2.5 font-serif text-xs font-semibold uppercase tracking-[0.1em] text-ink select-none hover:text-amber">Lihat contoh format laporan WhatsApp (data contoh)</summary>
+            <pre class="overflow-x-auto border-t border-gold/40 p-4 font-sans text-xs leading-relaxed whitespace-pre-wrap text-ink">📅 *Absensi Siswa Kelas 7*
 *Tanggal:* Sabtu, 7 Maret 2026
 *Mapel:* Informatika
 *Materi:* Pengenalan Sistem Operasi
@@ -196,37 +221,37 @@ Hadir: 5 | Terlambat: 0 | Izin: 1 | Sakit: 1 | Alpa: 1
 Total Diabsen: 8 dari 8 siswa</pre>
           </details>
 
-          <dl class="mt-5 grid gap-3 border-t border-line/30 pt-4 text-sm sm:grid-cols-2">
+          <dl class="mt-5 grid gap-3 border-t border-gold/40 pt-4 text-[16px] sm:grid-cols-2">
             <div>
-              <dt class="text-muted">Pengguna &amp; Portal</dt>
-              <dd class="mt-0.5 text-ink">SMP &amp; SMA Budi Utomo Boarding School Tarakan (<code class="text-xs">bubstarakan.com</code>)</dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Pengguna &amp; Portal</dt>
+              <dd class="mt-1 text-ink">SMP &amp; SMA Budi Utomo Boarding School Tarakan (<code class="font-sans text-xs">bubstarakan.com</code>)</dd>
             </div>
             <div>
-              <dt class="text-muted">Teknologi</dt>
-              <dd class="mt-0.5 text-ink">React.js &amp; Headless WordPress API</dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Teknologi</dt>
+              <dd class="mt-1 text-ink">React.js &amp; Headless WordPress API</dd>
             </div>
             <div class="sm:col-span-2">
-              <dt class="text-muted">Catatan Lapangan</dt>
-              <dd class="mt-0.5 leading-relaxed text-ink">Fitur tambahan seperti tugas kelas mirip <em class="italic">classroom</em> sempat dibuat, namun saya matikan karena guru ternyata lebih membutuhkan kecepatan pencatatan absen dan transparansi ke WhatsApp.</dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Catatan Lapangan</dt>
+              <dd class="mt-1 leading-relaxed text-muted">Fitur tambahan seperti tugas kelas mirip <em class="italic">classroom</em> sempat dibuat, namun saya matikan karena guru ternyata lebih membutuhkan kecepatan pencatatan absen dan transparansi ke WhatsApp.</dd>
             </div>
           </dl>
         </article>
 
         <!-- 2. Absensi Guru GPS -->
-        <article class="border border-line p-6 sm:p-10">
+        <article class="scholar-card p-6 sm:p-10">
           <div class="flex flex-wrap items-start justify-between gap-3">
-            <h3 class="font-serif text-xl leading-snug sm:text-2xl">2. Sistem Presensi Guru Berbasis Lokasi GPS</h3>
-            <span class="shrink-0 border border-line px-2.5 py-0.5 text-xs tracking-wide">Dipakai aktif</span>
+            <h3 class="font-serif text-xl font-bold leading-snug text-ink sm:text-2xl">2. Sistem Presensi Guru Berbasis Lokasi GPS</h3>
+            <span class="scholar-badge shrink-0">Dipakai aktif</span>
           </div>
 
-          <div class="mt-4 space-y-3 text-[15px] leading-[1.75] text-muted">
+          <div class="mt-4 space-y-3 text-[17px] leading-[1.72] text-muted">
             <p>Untuk membantu sekolah memverifikasi kehadiran guru secara akurat, saya membuat modul presensi satu halaman yang terhubung langsung ke portal absensi sekolah.</p>
             <p>Guru memilih nama, status posisi (Sekolah, Dinas Luar, atau Lainnya), keterangan opsional, lalu menekan validasi lokasi. Sistem menghitung jarak koordinat GPS perangkat terhadap titik koordinat sekolah dalam satuan meter dan menghasilkan format laporan siap kirim ke grup WhatsApp guru.</p>
           </div>
 
-          <details class="mt-4 border border-line/40 text-sm">
-            <summary class="cursor-pointer px-4 py-2.5 font-semibold text-ink select-none hover:bg-ink/5">Lihat contoh format presensi guru (data contoh)</summary>
-            <pre class="overflow-x-auto border-t border-line/40 p-4 font-sans text-xs leading-relaxed whitespace-pre-wrap text-ink">📍 *ABSENSI GURU*
+          <details class="mt-5 border border-gold/55 bg-paper/70 text-[15px]">
+            <summary class="cursor-pointer px-4 py-2.5 font-serif text-xs font-semibold uppercase tracking-[0.1em] text-ink select-none hover:text-amber">Lihat contoh format presensi guru (data contoh)</summary>
+            <pre class="overflow-x-auto border-t border-gold/40 p-4 font-sans text-xs leading-relaxed whitespace-pre-wrap text-ink">📍 *ABSENSI GURU*
 
 *Nama*    : Budi Santoso, S.Pd.
 *Tanggal* : Selasa, 27 Januari 2026
@@ -239,203 +264,215 @@ Total Diabsen: 8 dari 8 siswa</pre>
 Mengisi jam pertama di kelas 8A</pre>
           </details>
 
-          <dl class="mt-5 grid gap-3 border-t border-line/30 pt-4 text-sm sm:grid-cols-2">
+          <dl class="mt-5 grid gap-3 border-t border-gold/40 pt-4 text-[16px] sm:grid-cols-2">
             <div>
-              <dt class="text-muted">Pengguna &amp; Portal</dt>
-              <dd class="mt-0.5 text-ink">Guru SMP Budi Utomo Boarding School (<code class="text-xs">bubstarakan.com</code>)</dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Pengguna &amp; Portal</dt>
+              <dd class="mt-1 text-ink">Guru SMP Budi Utomo Boarding School (<code class="font-sans text-xs">bubstarakan.com</code>)</dd>
             </div>
             <div>
-              <dt class="text-muted">Teknologi</dt>
-              <dd class="mt-0.5 text-ink">React.js, Geolocation API, PHP Vanilla API</dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Teknologi</dt>
+              <dd class="mt-1 text-ink">React.js, Geolocation API, PHP Vanilla API</dd>
             </div>
             <div class="sm:col-span-2">
-              <dt class="text-muted">Catatan Lapangan</dt>
-              <dd class="mt-0.5 leading-relaxed text-ink">Fitur presensi harian sudah berjalan, sementara modul rekap otomatis bulanan masih menunggu jadwal pengembangan. Pelajaran pentingnya: merilis fitur baru ke guru tetap perlu sesi pendampingan singkat agar adopsinya merata.</dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Catatan Lapangan</dt>
+              <dd class="mt-1 leading-relaxed text-muted">Fitur presensi harian sudah berjalan, sementara modul rekap otomatis bulanan masih menunggu jadwal pengembangan. Pelajaran pentingnya: merilis fitur baru ke guru tetap perlu sesi pendampingan singkat agar adopsinya merata.</dd>
             </div>
           </dl>
         </article>
 
         <!-- 3. Portal Pondok & Rencana RFID -->
-        <article class="border border-line p-6 sm:p-10">
+        <article class="scholar-card p-6 sm:p-10">
           <div class="flex flex-wrap items-start justify-between gap-3">
-            <h3 class="font-serif text-xl leading-snug sm:text-2xl">3. Portal Absensi Pondok &amp; Rencana Integrasi RFID</h3>
-            <span class="shrink-0 border border-line/60 px-2.5 py-0.5 text-xs tracking-wide">Uji coba &amp; roadmap</span>
+            <h3 class="font-serif text-xl font-bold leading-snug text-ink sm:text-2xl">3. Portal Absensi Pondok &amp; Rencana Integrasi RFID</h3>
+            <span class="scholar-badge shrink-0">Uji coba &amp; roadmap</span>
           </div>
 
-          <div class="mt-4 space-y-3 text-[15px] leading-[1.75] text-muted">
-            <p>Portal utama sekolah (<code class="text-xs text-ink">bubstarakan.com</code>) sedang dikembangkan menjadi satu pintu yang menggabungkan absensi mapel SMP/SMA, akses ke SPP, absensi pengajian pondok, dan absensi apel pondok.</p>
-            <p>Modul pengajian dan apel pondok saat ini berada pada tahap uji coba lapangan, dengan rencana lanjutan mengintegrasikan pembaca kartu <strong>RFID / smart tag ID</strong> pada kartu santri yang perangkat fisiknya sudah tersedia.</p>
+          <div class="mt-4 space-y-3 text-[17px] leading-[1.72] text-muted">
+            <p>Portal utama sekolah (<code class="font-sans text-xs text-ink">bubstarakan.com</code>) sedang dikembangkan menjadi satu pintu yang menggabungkan absensi mapel SMP/SMA, akses ke SPP, absensi pengajian pondok, dan absensi apel pondok.</p>
+            <p>Modul pengajian dan apel pondok saat ini berada pada tahap uji coba lapangan, dengan rencana lanjutan mengintegrasikan pembaca kartu <strong class="font-semibold text-ink">RFID / smart tag ID</strong> pada kartu santri yang perangkat fisiknya sudah tersedia.</p>
           </div>
 
-          <dl class="mt-5 grid gap-3 border-t border-line/30 pt-4 text-sm sm:grid-cols-2">
+          <dl class="mt-5 grid gap-3 border-t border-gold/40 pt-4 text-[16px] sm:grid-cols-2">
             <div>
-              <dt class="text-muted">Lingkup</dt>
-              <dd class="mt-0.5 text-ink">Sekolah &amp; Pondok Budi Utomo Tarakan</dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Lingkup</dt>
+              <dd class="mt-1 text-ink">Sekolah &amp; Pondok Budi Utomo Tarakan</dd>
             </div>
             <div>
-              <dt class="text-muted">Status</dt>
-              <dd class="mt-0.5 text-ink">Pengembangan &amp; pengujian berkala</dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Status</dt>
+              <dd class="mt-1 text-ink">Pengembangan &amp; pengujian berkala</dd>
             </div>
           </dl>
         </article>
 
         <!-- 4. Manajemen SPP & Printout Kwitansi -->
-        <article class="border border-line p-6 sm:p-10">
+        <article class="scholar-card p-6 sm:p-10">
           <div class="flex flex-wrap items-start justify-between gap-3">
-            <h3 class="font-serif text-xl leading-snug sm:text-2xl">4. Sistem Manajemen SPP &amp; Cetak Kwitansi</h3>
-            <span class="shrink-0 border border-line/60 px-2.5 py-0.5 text-xs tracking-wide">Terbangun</span>
+            <h3 class="font-serif text-xl font-bold leading-snug text-ink sm:text-2xl">4. Sistem Manajemen SPP &amp; Cetak Kwitansi</h3>
+            <span class="scholar-badge shrink-0">Terbangun</span>
           </div>
 
-          <div class="mt-4 space-y-3 text-[15px] leading-[1.75] text-muted">
+          <div class="mt-4 space-y-3 text-[17px] leading-[1.72] text-muted">
             <p>Dibangun dalam waktu dua bulan untuk mengelola tagihan SPP siswa dengan skema pembayaran bertahap (cicilan) hingga status otomatis berubah menjadi lunas, berbagi database siswa dengan sistem absensi utama.</p>
             <p>Dilengkapi halaman pemilihan riwayat pembayaran untuk mencetak bukti kwitansi langsung dari browser lengkap dengan kolom nama bendahara, nama orang tua, nomor surat, dan tanggal.</p>
           </div>
 
-          <dl class="mt-5 grid gap-3 border-t border-line/30 pt-4 text-sm sm:grid-cols-2">
+          <dl class="mt-5 grid gap-3 border-t border-gold/40 pt-4 text-[16px] sm:grid-cols-2">
             <div>
-              <dt class="text-muted">Subdomain Sistem</dt>
-              <dd class="mt-0.5 text-ink"><code class="text-xs">spp.bubstarakan.com</code></dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Subdomain Sistem</dt>
+              <dd class="mt-1 text-ink"><code class="font-sans text-xs">spp.bubstarakan.com</code></dd>
             </div>
             <div>
-              <dt class="text-muted">Teknologi</dt>
-              <dd class="mt-0.5 text-ink">Vue.js &amp; PHP Vanilla API</dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Teknologi</dt>
+              <dd class="mt-1 text-ink">Vue.js &amp; PHP Vanilla API</dd>
             </div>
             <div class="sm:col-span-2">
-              <dt class="text-muted">Catatan Lapangan</dt>
-              <dd class="mt-0.5 leading-relaxed text-ink">Sistem jarang dipakai rutin karena bendahara sudah nyaman dengan pencatatan Excel dan kwitansi tulis tangan. Dari sini saya belajar bahwa memahami alur kerja pengguna jauh lebih penting daripada sekadar menerjemahkan permintaan fitur.</dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Catatan Lapangan</dt>
+              <dd class="mt-1 leading-relaxed text-muted">Sistem jarang dipakai rutin karena bendahara sudah nyaman dengan pencatatan Excel dan kwitansi tulis tangan. Dari sini saya belajar bahwa memahami alur kerja pengguna jauh lebih penting daripada sekadar menerjemahkan permintaan fitur.</dd>
             </div>
           </dl>
         </article>
 
         <!-- 5. Website Profil Sekolah SMP -->
-        <article class="border border-line p-6 sm:p-10">
+        <article class="scholar-card p-6 sm:p-10">
           <div class="flex flex-wrap items-start justify-between gap-3">
-            <h3 class="font-serif text-xl leading-snug sm:text-2xl">5. Website Profil Resmi SMP Budi Utomo Boarding School</h3>
-            <span class="shrink-0 border border-line/60 px-2.5 py-0.5 text-xs tracking-wide">Selesai</span>
+            <h3 class="font-serif text-xl font-bold leading-snug text-ink sm:text-2xl">5. Website Profil Resmi SMP Budi Utomo Boarding School</h3>
+            <span class="scholar-badge shrink-0">Selesai</span>
           </div>
 
-          <div class="mt-4 space-y-3 text-[15px] leading-[1.75] text-muted">
+          <div class="mt-4 space-y-3 text-[17px] leading-[1.72] text-muted">
             <p>Portal informasi resmi sekolah yang memuat profil lembaga, visi dan misi, dokumentasi kegiatan, serta informasi kontak. Dibangun dalam kurun waktu sekitar 10 hari agar sekolah memiliki etalase publik tersendiri.</p>
             <p>Sebelumnya pada tahun 2024, saya bersama tim guru juga sempat membangun website informasi untuk Yayasan Almukminun menggunakan WordPress sebelum akhirnya difokuskan ke subdomain khusus sekolah SMP.</p>
           </div>
 
-          <dl class="mt-5 grid gap-3 border-t border-line/30 pt-4 text-sm sm:grid-cols-2">
+          <dl class="mt-5 grid gap-3 border-t border-gold/40 pt-4 text-[16px] sm:grid-cols-2">
             <div>
-              <dt class="text-muted">Tautan Publik</dt>
-              <dd class="mt-0.5"><a href="https://smp.bubstarakan.com" target="_blank" rel="noopener noreferrer" class="text-ink underline decoration-1 underline-offset-4 hover:no-underline">smp.bubstarakan.com</a></dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Tautan Publik</dt>
+              <dd class="mt-1"><a href="https://smp.bubstarakan.com" target="_blank" rel="noopener noreferrer" class="scholar-link">smp.bubstarakan.com</a></dd>
             </div>
             <div>
-              <dt class="text-muted">Teknologi</dt>
-              <dd class="mt-0.5 text-ink">WordPress, Elementor, HTML &amp; CSS Kustom</dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Teknologi</dt>
+              <dd class="mt-1 text-ink">WordPress, Elementor, HTML &amp; CSS Kustom</dd>
             </div>
           </dl>
         </article>
 
         <!-- 6. Database Generus PPG Kota Tarakan -->
-        <article class="border border-line p-6 sm:p-10">
+        <article class="scholar-card p-6 sm:p-10">
           <div class="flex flex-wrap items-start justify-between gap-3">
-            <h3 class="font-serif text-xl leading-snug sm:text-2xl">6. Sistem Database Generus PPG Kota Tarakan</h3>
-            <span class="shrink-0 border border-line px-2.5 py-0.5 text-xs tracking-wide">Dipakai aktif</span>
+            <h3 class="font-serif text-xl font-bold leading-snug text-ink sm:text-2xl">6. Sistem Database Generus PPG Kota Tarakan</h3>
+            <span class="scholar-badge shrink-0">Dipakai aktif</span>
           </div>
 
-          <div class="mt-4 space-y-3 text-[15px] leading-[1.75] text-muted">
+          <div class="mt-4 space-y-3 text-[17px] leading-[1.72] text-muted">
             <p>Dibangun untuk membantu pengurus PPG Daerah Kota Tarakan memiliki data demografi generasi muda (generus) yang terstruktur di 2 desa dan 22 kelompok jamaah.</p>
             <p>Sistem menyediakan akun multi-login per kelompok untuk mengelola data generus dan berhasil mengumpulkan sekitar 950 data dalam dua bulan pertama.</p>
           </div>
 
-          <dl class="mt-5 grid gap-3 border-t border-line/30 pt-4 text-sm sm:grid-cols-2">
+          <dl class="mt-5 grid gap-3 border-t border-gold/40 pt-4 text-[16px] sm:grid-cols-2">
             <div>
-              <dt class="text-muted">Domain Sistem</dt>
-              <dd class="mt-0.5 text-ink"><code class="text-xs">database.ppgtarakan.com</code></dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Domain Sistem</dt>
+              <dd class="mt-1 text-ink"><code class="font-sans text-xs">database.ppgtarakan.com</code></dd>
             </div>
             <div>
-              <dt class="text-muted">Teknologi</dt>
-              <dd class="mt-0.5 text-ink">React.js, Headless WordPress API, MySQL</dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Teknologi</dt>
+              <dd class="mt-1 text-ink">React.js, Headless WordPress API, MySQL</dd>
             </div>
             <div class="sm:col-span-2">
-              <dt class="text-muted">Catatan Lapangan</dt>
-              <dd class="mt-0.5 leading-relaxed text-ink">Setelah dua bulan awal, pembaruan data dari tiap kelompok mulai jarang dilakukan. Pelajarannya: sebelum mendigitalkan pendataan organisasi, mekanisme pengumpulan dan pembaruan data secara rutin di lapangan harus disepakati dulu agar data digital tidak tertinggal dari kondisi nyata.</dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Catatan Lapangan</dt>
+              <dd class="mt-1 leading-relaxed text-muted">Setelah dua bulan awal, pembaruan data dari tiap kelompok mulai jarang dilakukan. Pelajarannya: sebelum mendigitalkan pendataan organisasi, mekanisme pengumpulan dan pembaruan data secara rutin di lapangan harus disepakati dulu agar data digital tidak tertinggal dari kondisi nyata.</dd>
             </div>
           </dl>
         </article>
 
         <!-- 7. Sistem Presensi Barcode CAI 2024 & 2025 -->
-        <article class="border border-line p-6 sm:p-10">
+        <article class="scholar-card p-6 sm:p-10">
           <div class="flex flex-wrap items-start justify-between gap-3">
-            <h3 class="font-serif text-xl leading-snug sm:text-2xl">7. Sistem Presensi Barcode Acara CAI (2024 &amp; 2025)</h3>
-            <span class="shrink-0 border border-line/60 px-2.5 py-0.5 text-xs tracking-wide">Acara tahunan</span>
+            <h3 class="font-serif text-xl font-bold leading-snug text-ink sm:text-2xl">7. Sistem Presensi Barcode Acara CAI (2024 &amp; 2025)</h3>
+            <span class="scholar-badge shrink-0">Acara tahunan</span>
           </div>
 
-          <div class="mt-4 space-y-3 text-[15px] leading-[1.75] text-muted">
+          <div class="mt-4 space-y-3 text-[17px] leading-[1.72] text-muted">
             <p>Sistem pemindaian barcode pada kartu peserta (<em class="italic">Co-Card</em>) untuk mencatat kehadiran peserta pengajian Cinta Alam Indonesia (4 hari berturut-turut, sesi pagi, siang, dan malam) di Masjid Almukminun Tarakan.</p>
-            <p>Pada tahun <strong>2024</strong>, sistem dibuat dalam 3 hari menggunakan server lokal di laptop lewat jaringan Wi-Fi masjid dengan ekspor data ke spreadsheet untuk rekap tiap akhir sesi. Pada tahun <strong>2025</strong>, sistem ditingkatkan menjadi versi online (<code class="text-xs text-ink">staging.ppgtarakan.com</code>) dengan tambahan papan peringkat 10 peserta tercepat hadir di setiap sesi.</p>
+            <p>Pada tahun <strong class="font-semibold text-ink">2024</strong>, sistem dibuat dalam 3 hari menggunakan server lokal di laptop lewat jaringan Wi-Fi masjid dengan ekspor data ke spreadsheet untuk rekap tiap akhir sesi. Pada tahun <strong class="font-semibold text-ink">2025</strong>, sistem ditingkatkan menjadi versi online (<code class="font-sans text-xs text-ink">staging.ppgtarakan.com</code>) dengan tambahan papan peringkat 10 peserta tercepat hadir di setiap sesi.</p>
           </div>
 
-          <dl class="mt-5 grid gap-3 border-t border-line/30 pt-4 text-sm sm:grid-cols-2">
+          <dl class="mt-5 grid gap-3 border-t border-gold/40 pt-4 text-[16px] sm:grid-cols-2">
             <div>
-              <dt class="text-muted">Penyelenggara</dt>
-              <dd class="mt-0.5 text-ink">LDII / PPG Kota Tarakan</dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Penyelenggara</dt>
+              <dd class="mt-1 text-ink">LDII / PPG Kota Tarakan</dd>
             </div>
             <div>
-              <dt class="text-muted">Teknologi</dt>
-              <dd class="mt-0.5 text-ink">React.js, Node.js (2024), Headless WordPress API (2025)</dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Teknologi</dt>
+              <dd class="mt-1 text-ink">React.js, Node.js (2024), Headless WordPress API (2025)</dd>
             </div>
           </dl>
         </article>
 
         <!-- 8. Cikal Bakal: Absensi Kartu Pelajar SDIT Insan Luhur -->
-        <article class="border border-line p-6 sm:p-10">
+        <article class="scholar-card p-6 sm:p-10">
           <div class="flex flex-wrap items-start justify-between gap-3">
-            <h3 class="font-serif text-xl leading-snug sm:text-2xl">8. Absensi Pagi &amp; Kartu Pelajar Barcode TK/SDIT Insan Luhur</h3>
-            <span class="shrink-0 border border-line/60 px-2.5 py-0.5 text-xs tracking-wide">Arsip 2024–2025</span>
+            <h3 class="font-serif text-xl font-bold leading-snug text-ink sm:text-2xl">8. Absensi Pagi &amp; Kartu Pelajar Barcode TK/SDIT Insan Luhur</h3>
+            <span class="scholar-badge shrink-0">Arsip 2024&ndash;2025</span>
           </div>
 
-          <div class="mt-4 space-y-3 text-[15px] leading-[1.75] text-muted">
+          <div class="mt-4 space-y-3 text-[17px] leading-[1.72] text-muted">
             <p>Proyek absensi sekolah pertama yang saya bangun dari diskusi kebutuhan untuk mencegah salah paham antara pihak sekolah dan orang tua mengenai status keterlambatan siswa di pagi hari.</p>
             <p>Saya membuat plugin khusus dan skema database kustom di atas WordPress tanpa plugin pihak ketiga: guru memindai barcode pada kartu pelajar (otomatis menandai terlambat jika lewat pukul 07.00), dan orang tua dapat memindai kartu yang sama untuk melihat riwayat kehadiran anaknya.</p>
           </div>
 
-          <dl class="mt-5 grid gap-3 border-t border-line/30 pt-4 text-sm sm:grid-cols-2">
+          <dl class="mt-5 grid gap-3 border-t border-gold/40 pt-4 text-[16px] sm:grid-cols-2">
             <div>
-              <dt class="text-muted">Teknologi</dt>
-              <dd class="mt-0.5 text-ink">WordPress Custom Plugin &amp; Custom Database Schema</dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Teknologi</dt>
+              <dd class="mt-1 text-ink">WordPress Custom Plugin &amp; Custom Database Schema</dd>
             </div>
             <div>
-              <dt class="text-muted">Status</dt>
-              <dd class="mt-0.5 text-ink">Tidak lagi aktif (<code class="text-xs">sdit.web.id</code> telah dihapus)</dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Status</dt>
+              <dd class="mt-1 text-ink">Tidak lagi aktif (<code class="font-sans text-xs">sdit.web.id</code> telah dihapus)</dd>
             </div>
             <div class="sm:col-span-2">
-              <dt class="text-muted">Nilai Penting</dt>
-              <dd class="mt-0.5 leading-relaxed text-ink">Meski tidak berlanjut dipakai di sekolah tersebut dan komunikasi awal kurang matang, konsep transparansi kehadiran ke orang tua inilah yang menjadi fondasi seluruh sistem absensi sekolah saya berikutnya.</dd>
+              <dt class="font-serif text-xs uppercase tracking-[0.12em] text-amber">Nilai Penting</dt>
+              <dd class="mt-1 leading-relaxed text-muted">Meski tidak berlanjut dipakai di sekolah tersebut dan komunikasi awal kurang matang, konsep transparansi kehadiran ke orang tua inilah yang menjadi fondasi seluruh sistem absensi sekolah saya berikutnya.</dd>
             </div>
           </dl>
         </article>
       </div>
     </section>
 
-    <!-- Bagian 2: Proyek Lepas & Awal Karier (2022–2023) -->
-    <section id="proyek-awal" class="relative mx-auto mt-16 max-w-3xl border border-line px-6 pt-10 pb-8 sm:px-12" aria-labelledby="judul-proyek-awal">
-      <h2 id="judul-proyek-awal" class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-paper px-4 font-serif text-base leading-7 whitespace-nowrap sm:px-5 sm:text-lg">Proyek Awal (2022–2023)</h2>
+    <!-- Divider Ornamen Fleur-de-lis -->
+    <div class="mx-auto my-12 flex max-w-3xl items-center justify-center gap-4 text-gold" aria-hidden="true">
+      <span class="h-px flex-1 bg-gradient-to-r from-transparent via-gold/60 to-amber/70"></span>
+      <svg class="h-6 w-6 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2c-1.4 2.4-2.1 4.6-2.1 6.7 0 1.4.4 2.6 1.1 3.6H8.9c.7-1 .9-2 .6-3.1-.4-1.5-1.7-2.6-3.2-2.6-1.4 0-2.5 1-2.5 2.4 0 1.1.8 2 1.8 2-.5.1-1-.2-1-.8 0-.5.4-.8.9-.8.9 0 1.6.9 1.6 2 0 1.5-1.1 2.7-2.6 2.9v1.5h5.2c-.3 1.4-1.1 2.5-2.4 3.2l.8 1.3c1.5-.8 2.6-2 3.1-3.6h1.6c.5 1.6 1.6 2.8 3.1 3.6l.8-1.3c-1.3-.7-2.1-1.8-2.4-3.2h5.2v-1.5c-1.5-.2-2.6-1.4-2.6-2.9 0-1.1.7-2 1.6-2 .5 0 .9.3.9.8 0 .6-.5.9-1 .8 1 0 1.8-.9 1.8-2 0-1.4-1.1-2.4-2.5-2.4-1.5 0-2.8 1.1-3.2 2.6-.3 1.1-.1 2.1.6 3.1H13c.7-1 1.1-2.2 1.1-3.6 0-2.1-.7-4.3-2.1-6.7Z" />
+      </svg>
+      <span class="h-px flex-1 bg-gradient-to-l from-transparent via-gold/60 to-amber/70"></span>
+    </div>
 
-      <div class="divide-y divide-line/30 text-[15px] leading-[1.75] text-muted">
+    <!-- Bagian 2: Proyek Lepas & Awal Karier (2022–2023) -->
+    <section id="proyek-awal" class="scholar-card mx-auto max-w-3xl px-6 py-9 sm:px-12 sm:py-11" aria-labelledby="judul-proyek-awal">
+      <div class="text-center">
+        <p class="font-serif text-xs font-semibold uppercase tracking-[0.18em] text-amber">Jejak 2022&ndash;2023</p>
+        <h2 id="judul-proyek-awal" class="mt-1 font-serif text-2xl font-bold text-ink">Proyek Awal &amp; Lepas</h2>
+      </div>
+
+      <div class="mt-7 divide-y divide-gold/35 text-[17px] leading-[1.72] text-muted">
         <div class="pb-6">
           <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 class="font-serif text-lg text-ink">Slicing Desain Figma ke React &amp; Tailwind CSS (Festival Tanweer)</h3>
-            <span class="text-xs text-muted">2023 &middot; Freelancer</span>
+            <h3 class="font-serif text-lg font-semibold text-ink">Slicing Desain Figma ke React &amp; Tailwind CSS (Festival Tanweer)</h3>
+            <span class="font-serif text-xs uppercase tracking-[0.1em] text-amber">2023 &middot; Freelancer</span>
           </div>
-          <p class="mt-2">Menerjemahkan rancangan antarmuka dari Figma menjadi halaman web React.js dan Tailwind CSS. Proyek ini menjadi pengalaman penting saat pertama kali memakai Tailwind CSS pada proyek klien—sekaligus pelajaran nyata tentang pendekatan <em class="italic">mobile-first</em> agar tata letak tetap rapi di layar ponsel.</p>
-          <p class="mt-2">
-            <a href="https://festival-tanweer.vercel.app/" target="_blank" rel="noopener noreferrer" class="text-ink underline decoration-1 underline-offset-4 hover:no-underline">Lihat hasil slicing (festival-tanweer.vercel.app) &rarr;</a>
+          <p class="mt-2">Menerjemahkan rancangan antarmuka dari Figma menjadi halaman web React.js dan Tailwind CSS. Proyek ini menjadi pengalaman penting saat pertama kali memakai Tailwind CSS pada proyek klien&mdash;sekaligus pelajaran nyata tentang pendekatan <em class="italic">mobile-first</em> agar tata letak tetap rapi di layar ponsel.</p>
+          <p class="mt-2.5">
+            <a href="https://festival-tanweer.vercel.app/" target="_blank" rel="noopener noreferrer" class="scholar-link">Lihat hasil slicing (festival-tanweer.vercel.app) &rarr;</a>
           </p>
         </div>
 
         <div class="pt-6">
           <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 class="font-serif text-lg text-ink">Halaman Web Statis HTML, CSS &amp; JavaScript</h3>
-            <span class="text-xs text-muted">Masa Kuliah &middot; Fiverr</span>
+            <h3 class="font-serif text-lg font-semibold text-ink">Halaman Web Statis HTML, CSS &amp; JavaScript</h3>
+            <span class="font-serif text-xs uppercase tracking-[0.1em] text-amber">Masa Kuliah &middot; Fiverr</span>
           </div>
           <p class="mt-2">Proyek-proyek pertama yang saya kerjakan untuk klien luar negeri selama berkuliah di semester 5, melatih dasar-dasar layout HTML, CSS, dan manipulasi DOM JavaScript:</p>
-          <ul class="mt-3 list-disc space-y-1.5 pl-5">
+          <ul class="mt-3 list-disc space-y-2 pl-5">
             <li><strong class="font-semibold text-ink">Random Instagram Embed Viewer:</strong> halaman tunggal satu tombol untuk menampilkan postingan Instagram klien secara acak dari daftar URL embed di JavaScript.</li>
             <li><strong class="font-semibold text-ink">Website Profil Keluarga &amp; Halaman Statis:</strong> pembuatan beberapa halaman HTML dan CSS sesuai spesifikasi dokumen desain klien (termasuk pesanan berulang dengan ulasan positif), serta eksplorasi halaman bertema rak buku perpustakaan dan halaman produk sederhana.</li>
           </ul>
@@ -444,23 +481,43 @@ Mengisi jam pertama di kelas 8A</pre>
     </section>
 
     <!-- Penutup CTA -->
-    <section class="mx-auto mt-12 max-w-3xl border border-line px-6 py-8 text-center sm:px-12">
-      <h2 class="font-serif text-xl sm:text-2xl">Butuh sistem sederhana untuk sekolah atau instansi?</h2>
-      <p class="mx-auto mt-3 max-w-xl text-[15px] leading-[1.75] text-muted">Jika Anda ingin berdiskusi tentang kebutuhan absensi, pencatatan SPP, atau sekadar menanyakan detail salah satu sistem di atas, silakan hubungi saya.</p>
-      <div class="mt-6 flex flex-wrap justify-center gap-4">
-        <a href="/kontak/" class="inline-block bg-ink px-7 py-3.5 text-[15px] font-semibold text-paper hover:opacity-85 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4">Halaman Kontak</a>
-        <a href="https://wa.me/6287865712625?text=Halo%20Mas%20Yusuf%2C%20saya%20baru%20melihat%20halaman%20proyek%20di%20yusuf-habib.blog%20dan%20ingin%20diskusi%20tentang..." target="_blank" rel="noopener noreferrer" class="inline-block border border-line px-7 py-3.5 text-[15px] font-semibold hover:bg-ink hover:text-paper focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4">Chat via WhatsApp</a>
+    <section class="scholar-card mx-auto mt-10 max-w-3xl px-6 py-9 text-center sm:px-12">
+      <h2 class="font-serif text-2xl font-bold text-ink">Butuh sistem sederhana untuk sekolah atau instansi?</h2>
+      <p class="mx-auto mt-3 max-w-xl text-[17px] leading-[1.72] text-muted">Jika Anda ingin berdiskusi tentang kebutuhan absensi, pencatatan SPP, atau sekadar menanyakan detail salah satu sistem di atas, silakan hubungi saya.</p>
+      <div class="mt-7 flex flex-wrap justify-center gap-3.5">
+        <a href="/kontak/" class="scholar-btn-primary">Halaman Kontak</a>
+        <a href="https://wa.me/6287865712625?text=Halo%20Mas%20Yusuf%2C%20saya%20baru%20melihat%20halaman%20proyek%20di%20yusuf-habib.blog%20dan%20ingin%20diskusi%20tentang..." target="_blank" rel="noopener noreferrer" class="scholar-btn-secondary">Chat via WhatsApp</a>
       </div>
     </section>
   </main>
 
-  <footer class="mx-auto w-full max-w-5xl px-5 sm:px-8">
-    <div class="flex flex-col items-center gap-3 border-t border-line py-8 text-sm text-muted sm:flex-row sm:justify-between">
-      <p>&copy; 2026 Yusuf Habib</p>
-      <div class="flex gap-6">
-          <a href="/blog/" class="hover:text-ink hover:underline decoration-1 underline-offset-4">Blog</a>
-          <a href="/proyek/" class="hover:text-ink hover:underline decoration-1 underline-offset-4">Proyek</a>
-          <a href="/kontak/" class="hover:text-ink hover:underline decoration-1 underline-offset-4">Kontak</a>
+  <!-- Footer Gelap Historis -->
+  <footer class="scholar-footer mt-14 w-full">
+    <div class="mx-auto max-w-5xl px-5 py-10 text-center sm:px-8 sm:py-12">
+      <nav class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 font-serif text-xs uppercase tracking-[0.16em] text-footer-ink/85" aria-label="Navigasi footer">
+        <a href="/" class="transition-colors hover:text-gold">Beranda</a>
+        <span class="text-gold/70" aria-hidden="true">&#9830;</span>
+        <a href="/blog/" class="transition-colors hover:text-gold">Blog</a>
+        <span class="text-gold/70" aria-hidden="true">&#9830;</span>
+        <a href="/proyek/" class="transition-colors hover:text-gold">Proyek</a>
+        <span class="text-gold/70" aria-hidden="true">&#9830;</span>
+        <a href="/kontak/" class="transition-colors hover:text-gold">Kontak</a>
+      </nav>
+
+      <p class="mx-auto mt-5 max-w-lg text-[16px] italic text-footer-ink/75">
+        Catatan dan sistem web sederhana untuk sekolah serta instansi, ditulis dari pengalaman langsung di lapangan.
+      </p>
+
+      <p class="mt-4 font-serif text-xs tracking-wider text-footer-ink/65">
+        &copy; 2026 Yusuf Habib &middot; Kota Tarakan
+      </p>
+
+      <div class="mt-5 flex items-center justify-center gap-3 text-gold" aria-hidden="true">
+        <span class="h-px w-12 bg-gold/45"></span>
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2c-1.4 2.4-2.1 4.6-2.1 6.7 0 1.4.4 2.6 1.1 3.6H8.9c.7-1 .9-2 .6-3.1-.4-1.5-1.7-2.6-3.2-2.6-1.4 0-2.5 1-2.5 2.4 0 1.1.8 2 1.8 2-.5.1-1-.2-1-.8 0-.5.4-.8.9-.8.9 0 1.6.9 1.6 2 0 1.5-1.1 2.7-2.6 2.9v1.5h5.2c-.3 1.4-1.1 2.5-2.4 3.2l.8 1.3c1.5-.8 2.6-2 3.1-3.6h1.6c.5 1.6 1.6 2.8 3.1 3.6l.8-1.3c-1.3-.7-2.1-1.8-2.4-3.2h5.2v-1.5c-1.5-.2-2.6-1.4-2.6-2.9 0-1.1.7-2 1.6-2 .5 0 .9.3.9.8 0 .6-.5.9-1 .8 1 0 1.8-.9 1.8-2 0-1.4-1.1-2.4-2.5-2.4-1.5 0-2.8 1.1-3.2 2.6-.3 1.1-.1 2.1.6 3.1H13c.7-1 1.1-2.2 1.1-3.6 0-2.1-.7-4.3-2.1-6.7Z" />
+        </svg>
+        <span class="h-px w-12 bg-gold/45"></span>
       </div>
     </div>
   </footer>
@@ -471,9 +528,9 @@ Mengisi jam pertama di kelas 8A</pre>
     type="button"
     aria-label="Kembali ke atas"
     title="Kembali ke atas"
-    class="invisible fixed right-5 bottom-5 flex h-11 w-11 translate-y-2 items-center justify-center border border-line bg-paper opacity-0 transition duration-200 hover:bg-ink hover:text-paper focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 sm:right-8 sm:bottom-8"
+    class="invisible fixed right-5 bottom-5 flex h-11 w-11 translate-y-2 items-center justify-center border border-gold bg-footer-bg text-gold opacity-0 shadow-md transition duration-200 hover:bg-amber hover:text-paper focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 sm:right-8 sm:bottom-8"
   >
-    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
       <path stroke-linecap="square" d="M12 19V5M6 11l6-6 6 6" />
     </svg>
   </button>

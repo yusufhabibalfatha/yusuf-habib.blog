@@ -3,76 +3,104 @@
 /* Dark mode berbasis class .dark pada <html> (diatur oleh tombol toggle) */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Font lokal (self-hosted, tanpa CDN) */
+/* Font lokal self-hosted: Playfair Display (Judul & UI) + EB Garamond (Body) */
 @font-face {
-  font-family: "Merriweather";
+  font-family: "Playfair Display";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../fonts/merriweather-latin-400-normal.woff2") format("woff2");
+  src: url("../fonts/playfair-display-latin-400-normal.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Merriweather";
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url("../fonts/merriweather-latin-400-italic.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Merriweather";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("../fonts/merriweather-latin-700-normal.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Open Sans";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("../fonts/open-sans-latin-400-normal.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Open Sans";
+  font-family: "Playfair Display";
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("../fonts/open-sans-latin-600-normal.woff2") format("woff2");
+  src: url("../fonts/playfair-display-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/playfair-display-latin-700-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/eb-garamond-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "EB Garamond";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/eb-garamond-latin-400-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/eb-garamond-latin-600-normal.woff2") format("woff2");
 }
 
 /*
-  Token warna: cukup ganti nilai di :root (terang) dan .dark (gelap).
-  Pakai di HTML sebagai bg-paper, text-ink, text-muted, border-line, dst.
+  Token desain Vintage Scholar & Historical Gothic (Old English Aesthetic):
+  Ancient Parchment (#F7F4EB), Charcoal Black (#1E1E1E),
+  Warm Amber (#8C6239), Deep Walnut (#3E2A1E), Brass Gold (#C19A5B)
 */
 @theme inline {
-  --font-serif: "Merriweather", Georgia, "Times New Roman", serif;
-  --font-sans: "Open Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: "EB Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, sans-serif;
 
   --color-paper: var(--paper);
+  --color-surface: var(--surface);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
+  --color-amber: var(--amber);
+  --color-walnut: var(--walnut);
+  --color-gold: var(--gold);
   --color-line: var(--line);
+  --color-footer-bg: var(--footer-bg);
+  --color-footer-ink: var(--footer-ink);
 }
 
 @layer base {
   :root {
-    --paper: #ffffff;
-    --ink: #111111;
-    --muted: #555555;
-    --line: #111111;
+    --paper: #f7f4eb;
+    --surface: #fcfaf3;
+    --ink: #1e1e1e;
+    --muted: #4f4438;
+    --amber: #8c6239;
+    --walnut: #3e2a1e;
+    --gold: #c19a5b;
+    --line: #3e2a1e;
+    --footer-bg: #1e1e1e;
+    --footer-ink: #f7f4eb;
     color-scheme: light;
   }
 
   .dark {
-    --paper: #141414;
-    --ink: #ececec;
-    --muted: #a3a3a3;
-    --line: #8a8a8a;
+    --paper: #171310;
+    --surface: #211b16;
+    --ink: #f2ece1;
+    --muted: #bcb09e;
+    --amber: #c9965c;
+    --walnut: #6f523c;
+    --gold: #d4af72;
+    --line: #5b4737;
+    --footer-bg: #100d0b;
+    --footer-ink: #f2ece1;
     color-scheme: dark;
   }
 
   html {
     scroll-behavior: smooth;
+    background-color: var(--paper);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -82,11 +110,170 @@
   }
 
   body {
-    @apply bg-paper font-sans text-ink antialiased;
+    font-family: var(--font-body);
+    background-color: var(--paper);
+    color: var(--ink);
+    background-image:
+      radial-gradient(ellipse at top center, rgb(193 154 91 / 0.08), transparent 62%),
+      radial-gradient(ellipse at bottom center, rgb(62 42 30 / 0.06), transparent 60%);
+    -webkit-font-smoothing: antialiased;
+    padding-top: env(safe-area-inset-top);
   }
 
   ::selection {
-    background-color: var(--ink);
+    background-color: var(--walnut);
     color: var(--paper);
+  }
+}
+
+@layer components {
+  /* Garis ganda vintage atas & bawah navigasi */
+  .scholar-nav-bar {
+    border-top: 2px solid var(--walnut);
+    border-bottom: 2px solid var(--walnut);
+    box-shadow:
+      inset 0 3px 0 0 var(--paper),
+      inset 0 4px 0 0 color-mix(in srgb, var(--gold) 75%, transparent),
+      inset 0 -3px 0 0 var(--paper),
+      inset 0 -4px 0 0 color-mix(in srgb, var(--gold) 75%, transparent);
+  }
+
+  /* Kartu konten Vintage Scholar dengan bingkai ganda & ornamen 4 sudut */
+  .scholar-card {
+    position: relative;
+    background-color: var(--surface);
+    border: 1px solid var(--walnut);
+    border-radius: 2px;
+    box-shadow:
+      0 8px 24px -10px rgb(30 20 12 / 0.16),
+      inset 0 0 0 4px var(--surface),
+      inset 0 0 0 5px color-mix(in srgb, var(--gold) 45%, transparent);
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36' fill='none'%3E%3Cpath d='M2 22V4a2 2 0 0 1 2-2h18' stroke='%238C6239' stroke-width='1.2'/%3E%3Cpath d='M6 16V7a1 1 0 0 1 1-1h9' stroke='%23C19A5B' stroke-width='0.9'/%3E%3Cpath d='M2 10c4 0 8-4 8-8' stroke='%23C19A5B' stroke-width='1'/%3E%3Ccircle cx='12' cy='12' r='1.3' fill='%23C19A5B'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36' fill='none'%3E%3Cg transform='scale(-1,1) translate(-36,0)'%3E%3Cpath d='M2 22V4a2 2 0 0 1 2-2h18' stroke='%238C6239' stroke-width='1.2'/%3E%3Cpath d='M6 16V7a1 1 0 0 1 1-1h9' stroke='%23C19A5B' stroke-width='0.9'/%3E%3Cpath d='M2 10c4 0 8-4 8-8' stroke='%23C19A5B' stroke-width='1'/%3E%3Ccircle cx='12' cy='12' r='1.3' fill='%23C19A5B'/%3E%3C/g%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36' fill='none'%3E%3Cg transform='scale(1,-1) translate(0,-36)'%3E%3Cpath d='M2 22V4a2 2 0 0 1 2-2h18' stroke='%238C6239' stroke-width='1.2'/%3E%3Cpath d='M6 16V7a1 1 0 0 1 1-1h9' stroke='%23C19A5B' stroke-width='0.9'/%3E%3Cpath d='M2 10c4 0 8-4 8-8' stroke='%23C19A5B' stroke-width='1'/%3E%3Ccircle cx='12' cy='12' r='1.3' fill='%23C19A5B'/%3E%3C/g%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36' fill='none'%3E%3Cg transform='scale(-1,-1) translate(-36,-36)'%3E%3Cpath d='M2 22V4a2 2 0 0 1 2-2h18' stroke='%238C6239' stroke-width='1.2'/%3E%3Cpath d='M6 16V7a1 1 0 0 1 1-1h9' stroke='%23C19A5B' stroke-width='0.9'/%3E%3Cpath d='M2 10c4 0 8-4 8-8' stroke='%23C19A5B' stroke-width='1'/%3E%3Ccircle cx='12' cy='12' r='1.3' fill='%23C19A5B'/%3E%3C/g%3E%3C/svg%3E");
+    background-position:
+      top 8px left 8px,
+      top 8px right 8px,
+      bottom 8px left 8px,
+      bottom 8px right 8px;
+    background-repeat: no-repeat;
+    background-size: 26px 26px;
+  }
+
+  /* Bingkai potret kayu kuno & kuningan untuk foto utama */
+  .portrait-frame {
+    padding: 7px;
+    background: linear-gradient(145deg, #4b3425 0%, #2a1c14 100%);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    box-shadow:
+      0 14px 32px -12px rgb(30 18 10 / 0.45),
+      inset 0 0 0 1px rgb(193 154 91 / 0.65);
+  }
+
+  /* Tombol Utama: Charcoal/Walnut + Brass Gold, hover ke Warm Amber */
+  .scholar-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.75rem;
+    background-color: #1e1e1e;
+    color: #e4c285;
+    border: 1px solid #c19a5b;
+    border-radius: 2px;
+    font-family: var(--font-serif);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    box-shadow:
+      0 4px 12px -4px rgb(30 20 12 / 0.35),
+      inset 0 0 0 2px #1e1e1e,
+      inset 0 0 0 3px rgb(193 154 91 / 0.5);
+    transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  }
+
+  .scholar-btn-primary:hover {
+    background-color: #8c6239;
+    color: #f7f4eb;
+    border-color: #e4c285;
+    box-shadow:
+      0 6px 16px -4px rgb(62 42 30 / 0.38),
+      inset 0 0 0 2px #8c6239,
+      inset 0 0 0 3px rgb(247 244 235 / 0.45);
+  }
+
+  /* Tombol Sekunder: Transparan + border Charcoal/Walnut */
+  .scholar-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.75rem;
+    background-color: transparent;
+    color: var(--ink);
+    border: 1px solid var(--walnut);
+    border-radius: 2px;
+    font-family: var(--font-serif);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    box-shadow:
+      inset 0 0 0 2px var(--surface),
+      inset 0 0 0 3px color-mix(in srgb, var(--amber) 45%, transparent);
+    transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+  }
+
+  .scholar-btn-secondary:hover {
+    background-color: var(--walnut);
+    color: var(--paper);
+    border-color: var(--gold);
+  }
+
+  /* Tautan teks hangat dengan warna Amber */
+  .scholar-link {
+    color: var(--amber);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    text-decoration-color: color-mix(in srgb, var(--gold) 85%, transparent);
+    transition: color 150ms ease, text-decoration-color 150ms ease;
+  }
+
+  .scholar-link:hover {
+    color: var(--ink);
+    text-decoration-color: var(--ink);
+  }
+
+  /* Badge status klasik */
+  .scholar-badge {
+    display: inline-block;
+    padding: 0.18rem 0.65rem;
+    border: 1px solid color-mix(in srgb, var(--gold) 80%, transparent);
+    background-color: color-mix(in srgb, var(--gold) 12%, transparent);
+    color: var(--walnut);
+    font-family: var(--font-serif);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+
+  .dark .scholar-badge {
+    color: var(--gold);
+  }
+
+  /* Footer gelap historis dengan safe area untuk iPhone Home Indicator */
+  .scholar-footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-ink);
+    border-top: 2px solid var(--gold);
+    box-shadow: inset 0 3px 0 0 var(--footer-bg), inset 0 4px 0 0 rgb(193 154 91 / 0.4);
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
